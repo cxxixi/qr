@@ -1,7 +1,13 @@
-A = rand(10,10);
+% Get google web links weighted graph
+file = 'Data/web-Stanford.txt';
+A = data_preprocess(file);
+
+
+
+% A = rand(10,10);
 
 % Calculate eigenvalues using Pure QR algorithm
-eig = pure_qr(A, 500);
+% eig = pure_qr(A, 500);
 
 hess = hessenberg(A);
 
