@@ -1,46 +1,48 @@
-% Comparison of orthogonality of Q matrix for different QR decomp approaches(Fixed: QR algorithm: Pure QR; Fixed matrix size Iteration time: 500)
-function test_orthogonality1()
+% Comparison of orthogonality of Q matrix for different QR decomp approaches(Fixed: QR algorithm: Pure QR; change matrix size? Fixed Iteration time: 500)
+function test_orthogonality2()
 n_iter = 500;
-s = zeros(1,n_iter);
-t1 = zeros(1,n_iter);
-t2 = zeros(1,n_iter);
-t3 = zeros(1,n_iter);
-A0 = rand(50,50);
-% [~,n] = size(A0);
-I = eye(size(A0));
+n_matrix = 10;
+s = zeros(1,n_matrix);
+t1 = zeros(1,n_matrix);
+t2 = zeros(1,n_matrix);
+t3 = zeros(1,n_matrix);
+
 format long
 % 
-%% HH
-A = A0;
-for i=1:n_iter
+
+for k=1:n_matrix
+  A0 = rand(k*5);
+  s(k)= k*5;
+  I = eye(size(A0));
+  
+  %% HH 
+  A = A0;
+  for i=1:n_iter
     [Q,R] = houseqr(A);
-    ortherr_hh = norm(Q'*Q-I,inf);
-    t1(i) = ortherr_hh;
 	A = R * Q;
-    s(i) = i;
-end
-%% Givens
-A = A0;
-for i=1:n_iter
+  end
+  ortherr_hh = norm(Q'*Q-I,inf);
+  t1(k) = ortherr_hh;
+  
+  %% givens
+  A = A0;
+  for i=1:n_iter
     [Q,R] = givensqr(A);
-    ortherr_givens = norm(Q'*Q-I,inf);
-    t2(i) = ortherr_givens;
 	A = R * Q;
-end
-
-%% mgs
-A = A0;
-for i=1:n_iter
+  end
+  ortherr_givens = norm(Q'*Q-I,inf);
+  t2(k) = ortherr_givens;
+  
+  %% mgs
+  A = A0;
+  for i=1:n_iter
     [Q,R] = mgsqr(A);
-    ortherr_mgs = norm(Q'*Q-I,inf);
-    t3(i) = ortherr_mgs;
 	A = R * Q;
+  end
+  ortherr_mgs = norm(Q'*Q-I,inf);
+  t3(k) = ortherr_mgs;
 end
-%%
-disp(ortherr_hh);
-disp(ortherr_givens);
-disp(ortherr_mgs);
-
+  
 
 figure
 ax1 = subplot(1,3,1);
