@@ -8,9 +8,11 @@ function eigs = shiftedQR(A)
         while( norm(A(n,n-1)) > 1e-12 )
             shiftv = getShiftValue( A(n-1,n-1), A(n,n), A(n-1,n) )  
             [Q,R] = houseqr(A - shiftv*I)
+            %%update Matrix A
             A = R*Q + shiftv*I
         end
-        %%recursive
+        %%recursive and return the current eigs
+        %%all eigns will form a vector
         eigs = [A(n,n) ; shiftedQR(A(1:n-1, 1:n-1))]
     else
         eigs(1) = A(1,1)
