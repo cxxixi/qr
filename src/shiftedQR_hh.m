@@ -1,4 +1,4 @@
-function eigs = shiftedQR(A, hess)
+function eigs = shiftedQR_hh(A, hess)
     n = size(A,1);
     eigs = zeros(n);
     if ( n ~= 1 )
@@ -13,7 +13,7 @@ function eigs = shiftedQR(A, hess)
         while( norm(A(n,n-1)) > 1e-6 && count < 20)
             shiftv = getShiftValue(H(n-1,n-1), H(n,n), H(n-1,n)); 
             %%shiftv = H(n,n)
-            [Q,R] = givensqr(H - shiftv*eye(n));
+            [Q,R] = houseqr(H - shiftv*eye(n));
             %%update Matrix A
             H = R*Q + shiftv*eye(n);
             count = count+1;

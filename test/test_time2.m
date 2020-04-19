@@ -6,11 +6,11 @@ s = zeros(1,10);
 t1 = zeros(1,10);
 t2 = zeros(1,10);
 t3 = zeros(1,10);
-n_iter = 100;
-for i=1:2
+n_iter = 500;
+for i=1:10
   A = rand(i*5);
   tic;
-  pure_qr(A, n_iter, "hh");
+  basic_qr(A, n_iter, "hh"); % set 500 as number of iteration 
   t1(i) = toc;
   % Placeholder for practical qr
   tic;
@@ -30,7 +30,7 @@ p1 = plot(s,t1,'LineWidth',1);
 ax1.XGrid = 'on';
 ax1.YGrid = 'on';
 p1.Marker = 'o';
-title('Pure QR');
+title('Basic QR');
 ylabel('Time (sec)');
 xlabel('Matrix size (nxn)');
 
@@ -39,7 +39,7 @@ p2 = plot(s,t2,'r','LineWidth',1);
 ax2.XGrid = 'on';
 ax2.YGrid = 'on';
 p2.Marker = 'o';
-title('Practial QR');
+title('Practical QR');
 ylabel('Time (sec)');
 xlabel('Matrix size (nxn)');
 

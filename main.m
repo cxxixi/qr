@@ -12,7 +12,7 @@ A=  [2.1304   -0.0299   -0.3473;
     0.0001    0.2856    0.2861;
     0.0000   -0.7208    0.0469];
 % eigs = shiftedQR(A);
-eigs = pure_qr(A,500, "hh");
+eigs = basic_qr(A,500, "hh");
 disp(eigs);
 eigss = eig(A);
 disp(eigss);

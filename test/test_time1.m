@@ -9,15 +9,15 @@ n_iter = 500;
 for i=1:10
   A = rand(i*5);
   tic;
-  pure_qr(A, n_iter, "hh");
+  basic_qr(A, n_iter, "hh");
   t1(i) = toc;
 
   tic;
-  pure_qr(A, n_iter, "givens");
+  basic_qr(A, n_iter, "givens");
   t2(i) = toc;
   
   tic;
-  pure_qr(A, n_iter, "mgs");
+  basic_qr(A, n_iter, "mgs");
   t3(i) = toc;
 
   s(i)= i*5;

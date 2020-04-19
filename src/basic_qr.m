@@ -1,4 +1,4 @@
-function eig = pure_qr(A, n_iter, method)
+function eig = basic_qr(A, n_iter, method)
 %%
 %Arguments:
 %    n_iter: number of iteration for QR algorithm
