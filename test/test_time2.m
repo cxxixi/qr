@@ -6,15 +6,15 @@ s = zeros(1,10);
 t1 = zeros(1,10);
 t2 = zeros(1,10);
 t3 = zeros(1,10);
-n_iter = 500;
-for i=1:10
+n_iter = 100;
+for i=1:2
   A = rand(i*5);
   tic;
   pure_qr(A, n_iter, "hh");
   t1(i) = toc;
   % Placeholder for practical qr
   tic;
-  eig(A);
+  shiftedQR(A);
   t2(i) = toc;
   
   tic;

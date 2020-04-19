@@ -1,7 +1,6 @@
 % execution time of different QR decomp approaches(Fixed: QR algorithm: Pure QR; Iteration time: 500)
 function test_time1()
 
-addpath(genpath('../src/'))
 s = zeros(1,10);
 t1 = zeros(1,10);
 t2 = zeros(1,10);
