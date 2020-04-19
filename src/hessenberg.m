@@ -12,5 +12,6 @@ for i=1:n-2
 	%disp(size(B));
 	B(i+1:end, i+1:end) = HH;
 	hess = B * hess * B;
+    disp(i)
 end
 end
