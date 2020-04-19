@@ -13,7 +13,8 @@ function eigs = shiftedQR(A)
         end
         %%recursive and return the current eigs
         %%all eigns will form a vector
-        eigs = [A(n,n) ; shiftedQR(A(1:n-1, 1:n-1))]
+        nexteigs = shiftedQR(A(1:n-1, 1:n-1))
+        eigs = [A(n,n) ; nexteigs]
     else
         eigs(1) = A(1,1)
     end
