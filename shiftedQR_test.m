@@ -1,8 +1,9 @@
 % THis shiftedQR algorithm is just for test
-function [eigs,errors] = shiftedQR_test(A, start,eig_true,errors) 
+function [eigs,errors] = shiftedQR_test(A, start,eig_true,errors,eigs) 
     n = size(A,1);
     eigs = zeros(n);
-    if errors(length(errors))~=0
+%     disp(errors);
+    if start ~= length(errors)
         if ( n ~= 1 )
             %%change it to Hessenberg 
             H = hessenberg( A );       
@@ -15,7 +16,8 @@ function [eigs,errors] = shiftedQR_test(A, start,eig_true,errors)
                 H = R*Q + shiftv*eye(n);
                 count = count+1;
                 start = start+1;
-                errors(start) = norm(eigs-eig_true); 
+                errors(start) = norm(eigs-eig_true,inf);
+                disp(start);
             end
             %%recursive and return the current eigs
             %%all eigns will form a vector
@@ -30,12 +32,12 @@ function [eigs,errors] = shiftedQR_test(A, start,eig_true,errors)
                     [Q,R]=qr(H-s*eye(n));
                     H=R*Q+s*eye(n);
                     start = start+1;
-                    errors(start) = norm(eigs-eig_true); 
+                    errors(start) = norm(eigs-eig_true,inf); 
                 end
-                nexteigs = shiftedQR(H(1:n-1, 1:n-1), start,eig_true, errors);
+                nexteigs = shiftedQR_test(H(1:n-1, 1:n-1), start,eig_true, errors, eigs);
                 eigs = [H(n,n) ; nexteigs];
             else
-                nexteigs = shiftedQR(H(1:n-1, 1:n-1), start,eig_true,errors);
+                nexteigs = shiftedQR_test(H(1:n-1, 1:n-1), start,eig_true,errors,eigs);
                 eigs = [H(n,n) ; nexteigs];
             end
         else
