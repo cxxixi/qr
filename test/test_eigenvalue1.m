@@ -31,8 +31,17 @@ end
 %% Pratical QR
 A = A0;
 start = 0;
-[~,t2] = shiftedQR_test(A,start,true_eig,t2);
-
+[~,n] = size(A0)
+eigns_shift = shiftedQR(A,"T");
+eigv_shift_abs = eye(n,1);
+for i = 1:n
+    eigv_shift_abs(i) = abs(eigns_shift(i,1));
+end
+eigv_shift_abs = sort(eigv_shift_abs);
+for j = 1:n
+     semilogy(j,norm(eigv(j) - eigv_shift_abs(i))/eigv(j),'.');
+     hold on
+end
 
 
 %%
