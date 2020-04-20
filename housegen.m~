@@ -1,4 +1,6 @@
 function [ u,nu ] = housegen( a )
+%GORKA ERAÑA ROBLES - This function computes a vector u that generates a
+%Householder reflection H = I - uu* satisfying Ha = nu·e1.
 
 u = a;
 nu = norm(a);

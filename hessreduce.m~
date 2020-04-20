@@ -5,8 +5,7 @@ H = A;
 Q = eye(n);
 
 for k = 1:n-2 
-    % Householder transformation
-    
+    % Householder transformation "for each column/row"
     [u,H(k+1,k)] = housegen(H(k+1:n,k));
     Q(k+1:n,k) = u;
     
@@ -21,7 +20,7 @@ for k = 1:n-2
     
 end
 
-
+% Accumulate transformations on matrix Q
 I = eye(n);
 for k = n-2:-1:1
     u = Q(k+1:n,k);

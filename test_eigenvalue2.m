@@ -2,13 +2,13 @@
 function test_eigenvalue2()
 
 format long
-sim=1000;
+sim=10;
 for j = 1:sim
     n = randi([5,30]);
     A = exp(randn(n)*1i + randn(n));
     disp(A);
     [H,Q] = hessreduce(A);
-    [T,Q] = hqr(H,Q,10000);
+    [T,Q] = shiftedQR_new(H,Q,10000);
     eigenval = abs(eig(A));
     semilogy(j,norm(eigenval - abs(diag(T)))/norm(eigenval),'.');
     hold on
