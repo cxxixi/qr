@@ -12,6 +12,7 @@ function transition_matrix = data_preprocess(file_path)
         weight(i) = 1/out_degree; 
     end
     transition_matrix = adjacency(G,weight);
+    transition_matrix = full(transition_matrix);
 end
 
 
