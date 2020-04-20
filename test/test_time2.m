@@ -14,7 +14,7 @@ for i=1:10
   t1(i) = toc;
   % Placeholder for practical qr
   tic;
-  shiftedQR(A);
+  shiftedQR(A,"T");
   t2(i) = toc;
   
   tic;
