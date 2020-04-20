@@ -8,8 +8,7 @@ for j = 1:sim
     A = exp(randn(n)*1i + randn(n));
     disp(A);
     [H,Q] = hessreduce(A);
-[T,Q] = hqr(H,Q,10000);
-    [T,Q] = complexschur(A);
+    [T,Q] = hqr(H,Q,10000);
     eigenval = abs(eig(A));
     semilogy(j,norm(eigenval - abs(diag(T)))/norm(eigenval),'.');
     hold on
