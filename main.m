@@ -1,21 +1,22 @@
 addpath(genpath('./test/'))
-
+addpath(genpath('./Data/'))
+addpath(genpath('./src/'))
 % % Get google web links weighted graph
-% file = 'Data/web-Stanford.txt';
-% A = data_preprocess(file);
+file = 'web-Polblogs.txt';
+A = data_preprocess(file);
 
 
 % A = rand(4);
 % eigs = shiftedQR(A);
-
-A=  [2.1304   -0.0299   -0.3473;
-    0.0001    0.2856    0.2861;
-    0.0000   -0.7208    0.0469];
+% 
+% A=  [2.1304   -0.0299   -0.3473;
+%     0.0001    0.2856    0.2861;
+%    0.0000   -0.7208    0.0469];
 % eigs = shiftedQR(A);
-eigs = basic_qr(A,500, "hh");
-disp(eigs);
-eigss = eig(A);
+eigss = basic_qr(A,10, "hh");
 disp(eigss);
+eigsss = eig(A);
+disp(eigsss);
 
 %% Tests on Execution time
 
