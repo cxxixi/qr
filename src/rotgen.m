@@ -1,11 +1,4 @@
 function [ a,b,c,s ] = rotgen( a,b )
-%GORKA ERAÑA ROBLES - This function generates a Givens rotation from
-%elements a and b. It is implemented in complex arithmetic.
-%   It follows the ideas developed in 4.4.
-%   Input: quantities a, b where (c   s )·(a) = (nu*a/abs(a))
-%                                (-s' c') (b)   (     0     )
-%   Output: constants c and s; overwrites a with its final version and b with
-%   zero
 
 if ( b==0 )
     c = 1;
