@@ -4,7 +4,7 @@ n_iter = 500;
 s = zeros(1,n_iter);
 t1 = zeros(1,n_iter);
 t2 = zeros(1,n_iter);
-% t3 = zeros(1,n_iter);
+
 A0 = rand(15,15);
 [~,n] = size(A0);
 I = eye(size(A0));
@@ -23,9 +23,7 @@ for k=1:n_iter
     eigerr_basic = norm(eigv - true_eig,inf);
     t1(k) = eigerr_basic;
     s(k) = k;
-%     disp(eigv);
-%     disp(true_eig);
-%     disp(eigerr_hh);
+
 end
 
 %% Pratical QR
@@ -36,10 +34,6 @@ start = 0;
 
 
 %%
-% disp(eigerr_hh);
-% disp(eigerr_givens);
-% disp(eigerr_mgs);
-
 
 figure
 ax1 = subplot(1,3,1);

@@ -52,14 +52,4 @@ ylabel('Time (sec)');
 xlabel('Matrix size (nxn)');
 print('Runtime Difference Across QR Decomposition', '-depsc');
  
-% version 2
-% ax = subplot(1,1,1);
-% ylabel('Time (sec)');
-% xlabel('Matrix size (nxn)');
-% 
-% 
-% p = plot(s,t1,'b',s,t2,'r',s,t3,'k','LineWidth',1);
-% 
-% print('Runtimes Differentiation', '-depsc');
-
 end
