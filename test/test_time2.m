@@ -10,9 +10,9 @@ n_iter = 500;
 for i=1:10
   A = rand(i*5);
   tic;
-  basic_qr(A, n_iter, "hh"); % set 500 as number of iteration 
+  basic_qr(A, n_iter, "hh");  
   t1(i) = toc;
-  % Placeholder for practical qr
+
   tic;
   shiftedQR(A,"T");
   t2(i) = toc;
